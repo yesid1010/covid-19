@@ -1,4 +1,5 @@
 import { Component } from '@angular/core';
+import { CovidService } from '../services/covid.service';
 
 @Component({
   selector: 'app-tab3',
@@ -6,7 +7,17 @@ import { Component } from '@angular/core';
   styleUrls: ['tab3.page.scss']
 })
 export class Tab3Page {
+  public pais:string='colombia';
+  public datos:any;
+  constructor(private service:CovidService) {
+    this.getCountrie()
+  }
 
-  constructor() {}
-
+  ionViewWillEnter() {
+    this.getCountrie()
+  }
+  
+  async getCountrie(){
+    this.datos = await this.service.getCountrie(this.pais).toPromise() || []
+  }
 }

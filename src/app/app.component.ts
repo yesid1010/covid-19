@@ -1,8 +1,9 @@
 import { Component } from '@angular/core';
-
+import { CovidService } from './services/covid.service';
 import { Platform } from '@ionic/angular';
 import { SplashScreen } from '@ionic-native/splash-screen/ngx';
 import { StatusBar } from '@ionic-native/status-bar/ngx';
+
 
 @Component({
   selector: 'app-root',
@@ -11,6 +12,7 @@ import { StatusBar } from '@ionic-native/status-bar/ngx';
 })
 export class AppComponent {
   constructor(
+    public service:CovidService,
     private platform: Platform,
     private splashScreen: SplashScreen,
     private statusBar: StatusBar
@@ -20,8 +22,10 @@ export class AppComponent {
 
   initializeApp() {
     this.platform.ready().then(() => {
-      this.statusBar.styleDefault();
+     // this.statusBar.styleDefault();
+      this.service.getAllCountries()
       this.splashScreen.hide();
     });
   }
+
 }

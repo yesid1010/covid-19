@@ -1,17 +1,87 @@
 <ion-header [translucent]="true">
-  <ion-toolbar>
-    <ion-title>
-      Tab 3
+  <ion-toolbar *ngIf="datos" color="primary">
+    <ion-title >
+      {{datos.country}}
     </ion-title>
+    <ion-avatar class="ion-padding" slot="start">
+      <img src="{{datos.countryInfo.flag}}" alt="">
+    </ion-avatar>
   </ion-toolbar>
 </ion-header>
 
-<ion-content [fullscreen]="true">
-  <ion-header collapse="condense">
-    <ion-toolbar>
-      <ion-title size="large">Tab 3</ion-title>
-    </ion-toolbar>
-  </ion-header>
+<ion-content class="ion-padding" *ngIf="datos" [fullscreen]="true">
 
-  <app-explore-container name="Tab 3 page"></app-explore-container>
+  <ion-row>
+    <ion-col size="6">
+      <ion-card-header color="primary">
+        <ion-card-subtitle><strong>Total Casos</strong></ion-card-subtitle>
+        <ion-card-subtitle>{{datos.cases | currency:'':'':'0.0'}}</ion-card-subtitle>
+      </ion-card-header>
+    </ion-col>
+    <ion-col size="6">
+      <ion-card-header color="primary">
+        <ion-card-subtitle><strong>Casos Hoy</strong></ion-card-subtitle>
+        <ion-card-subtitle>{{datos.todayCases | currency:'':'':'0.0'}}</ion-card-subtitle>
+      </ion-card-header>
+    </ion-col>
+  </ion-row>
+  <ion-row>
+    <ion-col size="6">
+      <ion-card-header color="danger">
+        <ion-card-subtitle><strong>Total Muertes</strong></ion-card-subtitle>
+        <ion-card-subtitle>{{datos.deaths | currency:'':'':'0.0'}}</ion-card-subtitle>
+      </ion-card-header>
+    </ion-col>
+    <ion-col size="6">
+      <ion-card-header color="danger">
+        <ion-card-subtitle><strong>Muertes hoy</strong></ion-card-subtitle>
+        <ion-card-subtitle>{{datos.todayDeaths | currency:'':'':'0.0'}}</ion-card-subtitle>
+      </ion-card-header>
+    </ion-col>
+  </ion-row>
+  <ion-row>
+    <ion-col size="6">
+      <ion-card-header color="warning">
+        <ion-card-subtitle><strong>Casos Activos</strong></ion-card-subtitle>
+        <ion-card-subtitle>{{datos.active | currency:'':'':'0.0'}}</ion-card-subtitle>
+      </ion-card-header>
+    </ion-col>
+    <ion-col size="6">
+      <ion-card-header color="warning">
+        <ion-card-subtitle><strong>Casos Criticos</strong></ion-card-subtitle>
+        <ion-card-subtitle>{{datos.critical | currency:'':'':'0.0'}}</ion-card-subtitle>
+      </ion-card-header>
+    </ion-col>
+  </ion-row>
+  <ion-row>
+    <ion-col size="6">
+      <ion-card-header color="success">
+        <ion-card-subtitle><strong>Total Recuperados</strong></ion-card-subtitle>
+        <ion-card-subtitle>{{datos.recovered | currency:'':'':'0.0'}}</ion-card-subtitle>
+      </ion-card-header>
+    </ion-col>
+    <ion-col size="6">
+      <ion-card-header color="success">
+        <ion-card-subtitle><strong>Recuperados Hoy</strong></ion-card-subtitle>
+        <ion-card-subtitle>{{datos.todayRecovered | currency:'':'':'0.0'}}</ion-card-subtitle>
+      </ion-card-header>
+    </ion-col>
+  </ion-row>
+
+  <ion-row>
+    <ion-col size="6">
+      <ion-card-header color="secondary">
+        <ion-card-subtitle><strong>Pruebas Realizadas</strong></ion-card-subtitle>
+        <ion-card-subtitle>{{datos.tests | currency:'':'':'0.0'}}</ion-card-subtitle>
+      </ion-card-header>
+    </ion-col>
+    <ion-col size="6">
+      <ion-card-header color="secondary">
+        <ion-card-subtitle><strong>Cantidad Habitantes</strong></ion-card-subtitle>
+        <ion-card-subtitle>{{datos.population | currency:'':'':'0.0'}}</ion-card-subtitle>
+      </ion-card-header>
+    </ion-col>
+  </ion-row>
+
+
 </ion-content>

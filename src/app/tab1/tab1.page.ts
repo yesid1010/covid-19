@@ -1,4 +1,5 @@
 import { Component } from '@angular/core';
+import { CovidService } from '../services/covid.service';
 
 @Component({
   selector: 'app-tab1',
@@ -7,6 +8,17 @@ import { Component } from '@angular/core';
 })
 export class Tab1Page {
 
-  constructor() {}
+  public datos:any;
+  constructor(private service:CovidService) {
+    this.getAll()
+  }
+
+  ionViewWillEnter() {
+    this.getAll()
+  }
+
+  async getAll(){
+    this.datos = await this.service.getAll().toPromise() || [];
+  }
 
 }
