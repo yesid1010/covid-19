@@ -35,7 +35,7 @@ export class Tab2Page {
 
   cargarmas(){
 
-    for (let i = this.post; i < this.post+70; i++) {
+    for (let i = this.post; i < this.post+10; i++) {
       if( i < this.service.paises.length){
          this.paises.push(this.service.paises[i])
       }else{

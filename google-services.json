@@ -1,0 +1,40 @@
+{
+  "project_info": {
+    "project_number": "719112267744",
+    "firebase_url": "https://apks-fbc48.firebaseio.com",
+    "project_id": "apks-fbc48",
+    "storage_bucket": "apks-fbc48.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:719112267744:android:4ff8ef32cc24111d8b6d85",
+        "android_client_info": {
+          "package_name": "com.gamacode.covid"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "719112267744-5fievre89dp0ji6s9elbro381nbkhg8d.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyAlc75usULJBRBlbXR0JZQhFYvuQeWSI1A"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "719112267744-5fievre89dp0ji6s9elbro381nbkhg8d.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
