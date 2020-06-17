@@ -1,10 +1,17 @@
 <ion-header [translucent]="true">
-  <ion-toolbar color="primary">
-    <ion-title>
+ 
+    <!-- <ion-title class="ion-padding">
       Paises Infectados
-    </ion-title>
-    <ion-searchbar showCancelButton="always"></ion-searchbar>
-  </ion-toolbar>
+    </ion-title> -->
+    <ion-toolbar  color="primary" >
+      
+      <ion-searchbar color="primary" class="ion-padding" showCancelButton="focus"></ion-searchbar>
+    </ion-toolbar>
+    
+ 
+
+    
+
 </ion-header>
 
 <ion-content *ngIf="paises" [fullscreen]="true">
