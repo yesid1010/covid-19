@@ -1,8 +1,11 @@
-<ion-header [translucent]="true">
-  <ion-toolbar color="primary">
-    <ion-title>
-      Datos Generales
-    </ion-title>
+<ion-header [translucent]="true" >
+  <ion-toolbar>
+    <ion-buttons slot="primary">
+      <ion-button (click)="refresh()" >
+        <ion-icon slot="icon-only" name="refresh-sharp"></ion-icon>
+      </ion-button>
+    </ion-buttons>
+    <ion-title class="ion-text-center">Datos Generales</ion-title>
   </ion-toolbar>
 </ion-header>
 

@@ -2,6 +2,7 @@ import { Component } from '@angular/core';
 import { CovidService } from '../services/covid.service';
 import { Geolocation } from '@ionic-native/geolocation/ngx';
 import { NativeGeocoder, NativeGeocoderResult, NativeGeocoderOptions } from '@ionic-native/native-geocoder/ngx';
+import { LoadingController,ToastController } from '@ionic/angular';
 
 @Component({
   selector: 'app-tab3',
@@ -16,17 +17,40 @@ export class Tab3Page  {
 
 
 
-  constructor(private service:CovidService,private geo:Geolocation,private natgeo:NativeGeocoder) {
+  constructor(private service:CovidService,
+              private geo:Geolocation,
+              private natgeo:NativeGeocoder,
+              private loading:LoadingController,
+              public toastController: ToastController) {
     
      this.geo.getCurrentPosition().then((data=>{
-       console.log(data.coords.latitude,+'=>',data.coords.longitude);
        this.latitud = data.coords.latitude;
        this.longitud = data.coords.longitude;
        this.obtenerPais()
      }))
+     .catch(err => console.log('ha ocurrido un error',err))
 
-    
-    
+  }
+
+  async refresh(){
+    const loading = await this.loading.create({
+      cssClass: 'my-custom-class',
+      message: 'Espere un momento...',
+      duration: 2000
+    });
+
+    await loading.present();
+    this.getCountrie()
+    .then(() => console.log('datos actualizados'))
+
+    const { role, data } = await loading.onDidDismiss();
+    console.log('Loading dismissed!');
+    const toast = await this.toastController.create({
+      message: 'Datos Actualizados',
+      duration: 2000,
+      position: 'top'
+    });
+    toast.present();
   }
 
 

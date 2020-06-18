@@ -15,6 +15,7 @@ export class FirebaseService {
     this.fcm.getToken()
     .then((token)=>{
       this.token = token;
+      console.log(token);
     })
   }
 }

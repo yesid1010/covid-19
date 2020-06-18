@@ -1,11 +1,16 @@
-<ion-header [translucent]="true">
+
+
+<ion-header [translucent]="true" >
   <ion-toolbar *ngIf="datos" color="primary">
-    <ion-title >
-      {{datos.country}}
-    </ion-title>
+    <ion-buttons slot="end">
+      <ion-button (click)="refresh()" >
+        <ion-icon slot="icon-only" name="refresh-sharp"></ion-icon>
+      </ion-button>
+    </ion-buttons>
     <ion-avatar class="ion-padding" slot="start">
       <img src="{{datos.countryInfo.flag}}" alt="">
     </ion-avatar>
+    <ion-title class="ion-text-center">{{datos.country}}</ion-title>
   </ion-toolbar>
 </ion-header>
 
