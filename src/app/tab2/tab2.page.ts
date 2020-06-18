@@ -24,24 +24,31 @@ export class Tab2Page {
   }
 
   ionViewWillEnter() {
-    this.paises = []
+   
     this.getContries()
   }
 
-  
   BuscarPais(event){
-    // console.log(event.target.value);
-    // let pais = event.target.value;
-    // console.log(event);
-    // if(pais && pais.trim() != ''){
-    //   this.paises = this.paises.filter((item)=>{
-    //     return (item.country.toLowerCase().indexOf(pais.toLowerCase())>-1)
-    //   })
-    // }
+    this.paises = this.service.paises
 
+    let pais = event.target.value;
+    
+    if(!pais){
+      this.paises=[]
+      this.post = 10
+      return this.getContries() ;
+    }
+    
+    this.paises = this.paises.filter((item=>{
+      if(item.country && pais){
+        return (item.country.toLowerCase().indexOf(pais.toLowerCase())>-1)
+      }
+      
+    }))
   }
 
   getContries(){
+    this.paises = []
     for (let i = 0; i < this.post; i++) {
           this.paises.push(this.service.paises[i])
     }
@@ -78,6 +85,16 @@ export class Tab2Page {
     toast.present();
   }
 
+    doRefresh(event) {
+    console.log('Begin async operation');
+    this.refresh()
+
+    setTimeout(() => {
+      console.log('Async operation has ended');
+      event.target.complete();
+    }, 3000);
+  }
+
   cargarmas(){
 
     for (let i = this.post; i < this.post+10; i++) {
@@ -97,9 +114,6 @@ export class Tab2Page {
     setTimeout(() => {
       console.log('Done');
       event.target.complete();
-
-      // App logic to determine if all data is loaded
-      // and disable the infinite scroll
       this.cargarmas()
       let data:any = this.paises
       if (data.length == 5) {

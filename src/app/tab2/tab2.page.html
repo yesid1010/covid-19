@@ -1,11 +1,7 @@
 <ion-header [translucent]="true" class="ion-no-border">
  
     <ion-toolbar>
-      <ion-buttons slot="end">
-        <ion-button (click)="refresh()" >
-          <ion-icon slot="icon-only" name="refresh-sharp"></ion-icon>
-        </ion-button>
-      </ion-buttons>
+
       <ion-searchbar placeholder="Buscar Pais"
                       animated
                       (ionChange)="BuscarPais($event)"></ion-searchbar>
@@ -15,6 +11,16 @@
 </ion-header>
 
 <ion-content *ngIf="paises" [fullscreen]="true">
+
+  <ion-refresher slot="fixed" (ionRefresh)="doRefresh($event)">
+    <ion-refresher-content
+      pullingIcon="chevron-down-circle-outline"
+      pullingText="Pull to refresh"
+      refreshingSpinner="circles"
+      refreshingText="Refreshing...">
+    </ion-refresher-content>
+  </ion-refresher>
+  
   <ion-card  *ngFor="let pais of paises ">
     <img width="100%" src="{{pais.countryInfo.flag}}" />
     <ion-card-header>
